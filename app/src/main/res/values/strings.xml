@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ReWriteFlexibleAdapter</string>
+    <string name="no_items">noItems</string>
 </resources>

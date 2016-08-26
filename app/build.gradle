@@ -25,5 +25,5 @@ dependencies {
     compile supportDependencies.appcompat
     compile supportDependencies.recyclerview
     compile supportDependencies.annotations
-
+    compile supportDependencies.design
 }
