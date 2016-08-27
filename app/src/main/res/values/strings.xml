@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">ReWriteFlexibleAdapter</string>
     <string name="no_items">noItems</string>
+
+    <string name="uls_title"><![CDATA[<i>Click on Image (or LongClick on Item) to select that Item</i>]]></string>
+    <string name="uls_subtitle"><![CDATA[<i>This is an example of 2nd view type</i>]]></string>
+    <string name="action_query">查找</string>
+    <string name="action_selection_one">选中一个</string>
+    <string name="action_selection_many">选中多个</string>
+    <string name="action_snack">删除 确认</string>
 </resources>

@@ -9,6 +9,7 @@ import java.util.List;
 public class DataService {
     private static final int ITEMS = 1000;
     private static DataService _dataService;
+    public static boolean userLearnedSelection=false;
 
     public static DataService getInstance() {
         if (_dataService == null) {
@@ -43,6 +44,9 @@ public class DataService {
 
     public Item removeId(int position) {
         return _items.remove(position);
+    }
+    public boolean removeItem(Item item){
+        return _items.remove(item);
     }
 
     public void addItem(int position, Item item) {

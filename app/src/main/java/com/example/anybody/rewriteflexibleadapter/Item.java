@@ -45,4 +45,9 @@ public class Item {
     }
 
     private String _subTitle;
+
+    @Override
+    public String toString() {
+        return getTitle();
+    }
 }

@@ -25,7 +25,7 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder,T>  e
         DEBUG=enable;
     }
 
-    @interface MODELS{
+    public @interface MODELS{
 
         public static final int MODE_SINGLE=1;
         public static final int MODE_MULTI=2;
@@ -60,10 +60,10 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder,T>  e
      * @param position
      * @param invalidate 强制row刷新并重新绑定item
      */
-    private void togglePosition(int position,boolean invalidate){
+    public void togglePosition(int position,boolean invalidate){
        if (position<0)return;
         if (_model==MODELS.MODE_SINGLE)clearSelection();
-        Integer index = _selectedItems.get(position);
+        int  index = _selectedItems.indexOf(position);
         if(index!=-1){
             if(DEBUG) Log.d(TAG, "togglePosition: remove selection position " +position);
             _selectedItems.remove(index);
@@ -99,11 +99,20 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder,T>  e
             if (getItemViewType(i)==skipViewType)continue;
             _selectedItems.add(i);
             Log.d(TAG, "selectAll: notifyItemChanged on position" + i);
-        notifyItemChanged(i
-        );
+            notifyItemChanged(i);
         }
-    }
 
+    }
+    public void clearSelections() {
+        Iterator<Integer> iterator = _selectedItems.iterator();
+        while (iterator.hasNext()){
+            Integer next = iterator.next();
+            iterator.remove();
+            notifyItemChanged(next);
+        }
+
+
+    }
     public ArrayList<Integer> getSelectedItems() {
         return _selectedItems;
     }

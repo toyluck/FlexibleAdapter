@@ -9,14 +9,14 @@ import android.view.View;
 public class FlexibleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
     private final FlexibleAdapter _adapter;
-    private final OnListItemClickListener _clickListener;
+    protected final OnListItemClickListener _clickListener;
 
     public FlexibleViewHolder(View itemView, FlexibleAdapter adapter, OnListItemClickListener clickListener) {
         super(itemView);
         _adapter = adapter;
         _clickListener = clickListener;
         this.itemView.setOnClickListener(this);
-    this.itemView.setOnLongClickListener(this);
+        this.itemView.setOnLongClickListener(this);
     }
 
     @Override
@@ -28,14 +28,14 @@ public class FlexibleViewHolder extends RecyclerView.ViewHolder implements View.
     }
 
 
-    private void toggleActivation() {
+    protected void toggleActivation() {
         this.itemView.setActivated(_adapter.isSelected(getAdapterPosition()));
     }
 
     @Override
     public boolean onLongClick(View v) {
         if (_clickListener != null &&
-                _clickListener.onListItemClick(getAdapterPosition())) {
+                _clickListener.onListItemLongClick(getAdapterPosition())) {
             toggleActivation();
             return true;
         }

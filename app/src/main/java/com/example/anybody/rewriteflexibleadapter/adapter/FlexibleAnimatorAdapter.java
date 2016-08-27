@@ -22,7 +22,7 @@ import java.util.List;
  */
 public abstract class FlexibleAnimatorAdapter<VH extends RecyclerView.ViewHolder, T> extends FlexibleAdapter<VH, T> {
 
-    private RecyclerView _recyclerView;
+    protected RecyclerView _recyclerView;
     //记录最后一个动画生效的item的位置
     private int _lastAnimatedPosition = -1;
 
@@ -101,7 +101,7 @@ public abstract class FlexibleAnimatorAdapter<VH extends RecyclerView.ViewHolder
     }
 
     //添加 透明动画
-    private void addAlphaAnimator(@NonNull List<Animator> animators, @NonNull View view, @FloatRange(from = 0, to = 1) float v) {
+    public void addAlphaAnimator(@NonNull List<Animator> animators, @NonNull View view, @FloatRange(from = 0, to = 1) float v) {
         if (_animatorUsed.contains(AnimatorEnum.ALPHA)) return;
         animators.add(ObjectAnimator.ofFloat(view, "alpha", v, 1f));
         _animatorUsed.add(AnimatorEnum.ALPHA);
